@@ -12,11 +12,12 @@ import java.nio.charset.Charset;
  */
 public class GuavaTest {
 
-    public static void main(String[] args) {
-        final BloomFilter<String> bloomFilter = BloomFilter.create(Funnels.stringFunnel(Charset.defaultCharset()), 10);
-        bloomFilter.put("qwe");
-        bloomFilter.put("zxc");
-        bloomFilter.put("asd");
-        System.out.println(bloomFilter.mightContain("qwer"));
-    }
+  public static void main(String[] args) {
+    final BloomFilter<String> bloomFilter =
+        BloomFilter.create(Funnels.stringFunnel(Charset.defaultCharset()), 10);
+    bloomFilter.put("qwe");
+    bloomFilter.put("zxc");
+    bloomFilter.put("asd");
+    System.out.println(bloomFilter.mightContain("qwer"));
+  }
 }

@@ -4,7 +4,6 @@ import com.google.common.util.concurrent.FutureCallback;
 
 import java.util.List;
 
-import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 import reactor.core.publisher.Flux;
@@ -19,22 +18,19 @@ import reactor.core.publisher.Mono;
  */
 public interface TestService {
 
-    void getFavoritesCallBack(FutureCallback<List<String>> callback);
+  void getFavoritesCallBack(FutureCallback<List<String>> callback);
 
-    void getDetailCallBack(String id, FutureCallback<String> callback);
+  void getDetailCallBack(String id, FutureCallback<String> callback);
 
-    List<String> getFavoritesSync();
+  List<String> getFavoritesSync();
 
-    String getDetailSync(String id);
+  String getDetailSync(String id);
 
-    Flux<String> getFavoritesReactor();
+  Flux<String> getFavoritesReactor();
 
-    Mono<String> getDetailReactor(String id);
+  Mono<String> getDetailReactor(String id);
 
+  Observable<String> getFavoritesRxJava();
 
-    Observable<String> getFavoritesRxJava();
-
-    Single<String> getDetailRxJava(String id);
-
-
+  Single<String> getDetailRxJava(String id);
 }

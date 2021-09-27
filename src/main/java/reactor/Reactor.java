@@ -18,66 +18,72 @@ import reactor.core.scheduler.Schedulers;
  */
 public class Reactor {
 
-    private static final TestService SERVICE = new TestServiceImpl();
+  private static final TestService SERVICE = new TestServiceImpl();
 
-    public static void main(String[] args) {
-//        sync();
-//        callBack();
-        reactor();
-//        rxJava();
-    }
+  public static void main(String[] args) {
+    //        sync();
+    //        callBack();
+    reactor();
+    //        rxJava();
+  }
 
-    static void rxJava() {
-        SERVICE.getFavoritesRxJava()
-                .map(SERVICE::getDetailRxJava)
-                .map(Single::blockingGet)
-                .subscribe(System.out::println, throwable -> System.err.println(throwable.getMessage()));
+  static void rxJava() {
+    SERVICE
+        .getFavoritesRxJava()
+        .map(SERVICE::getDetailRxJava)
+        .map(Single::blockingGet)
+        .subscribe(System.out::println, throwable -> System.err.println(throwable.getMessage()));
+  }
 
-    }
+  static void reactor() {
+    SERVICE
+        .getFavoritesReactor()
+        .flatMap(SERVICE::getDetailReactor)
+        .parallel()
+        .runOn(Schedulers.parallel())
+        .subscribe(
+            x -> System.out.println(Thread.currentThread().getName() + "\t" + x),
+            throwable -> System.err.println(throwable.getMessage()));
+  }
 
-    static void reactor() {
-        SERVICE.getFavoritesReactor()
-                .flatMap(SERVICE::getDetailReactor)
-                .parallel()
-                .runOn(Schedulers.parallel())
-                .subscribe(x -> System.out.println(Thread.currentThread().getName() + "\t" + x), throwable -> System.err.println(throwable.getMessage()));
-    }
+  static void callBack() {
+    SERVICE.getFavoritesCallBack(
+        new FutureCallback<List<String>>() {
+          @Override
+          public void onSuccess(@Nullable List<String> strings) {
+            assert strings != null;
+            for (String s : strings) {
+              SERVICE.getDetailCallBack(
+                  s,
+                  new FutureCallback<String>() {
+                    @Override
+                    public void onSuccess(@Nullable String string) {
+                      System.out.println(string);
+                    }
 
-    static void callBack() {
-        SERVICE.getFavoritesCallBack(new FutureCallback<List<String>>() {
-            @Override
-            public void onSuccess(@Nullable List<String> strings) {
-                assert strings != null;
-                for (String s : strings) {
-                    SERVICE.getDetailCallBack(s, new FutureCallback<String>() {
-                        @Override
-                        public void onSuccess(@Nullable String string) {
-                            System.out.println(string);
-                        }
-
-                        @Override
-                        public void onFailure(Throwable throwable) {
-                            System.err.println(throwable.getMessage());
-                        }
-                    });
-                }
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                      System.err.println(throwable.getMessage());
+                    }
+                  });
             }
+          }
 
-            @Override
-            public void onFailure(Throwable throwable) {
-                System.err.println(throwable.getMessage());
-            }
+          @Override
+          public void onFailure(Throwable throwable) {
+            System.err.println(throwable.getMessage());
+          }
         });
-    }
+  }
 
-    static void sync() {
-        final List<String> favoritesSync = SERVICE.getFavoritesSync();
-        for (String s : favoritesSync) {
-            try {
-                System.out.println(SERVICE.getDetailSync(s));
-            } catch (Exception exception) {
-                System.err.println(exception.getMessage());
-            }
-        }
+  static void sync() {
+    final List<String> favoritesSync = SERVICE.getFavoritesSync();
+    for (String s : favoritesSync) {
+      try {
+        System.out.println(SERVICE.getDetailSync(s));
+      } catch (Exception exception) {
+        System.err.println(exception.getMessage());
+      }
     }
+  }
 }
