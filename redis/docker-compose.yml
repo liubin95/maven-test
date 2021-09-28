@@ -1,0 +1,48 @@
+version: '3.7'
+
+services:
+  redis7001:
+    image: 'redis:5'
+    command:
+      [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    volumes:
+      - "./7001/redis.conf:/usr/local/etc/redis/redis.conf"
+    ports:
+      - "7001:7001"
+      - "17001:17001"
+    environment:
+      # 设置时区为上海，否则时间会有问题
+      - TZ=Asia/Shanghai
+
+
+  redis7002:
+    image: 'redis:5'
+    command:
+      [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    volumes:
+      - "./7002/redis.conf:/usr/local/etc/redis/redis.conf"
+    ports:
+      - "7002:7002"
+      - "17002:17002"
+    environment:
+      # 设置时区为上海，否则时间会有问题
+      - TZ=Asia/Shanghai
+
+
+  redis7003:
+    image: 'redis:5'
+    command:
+      [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    volumes:
+      - "./7003/redis.conf:/usr/local/etc/redis/redis.conf"
+    ports:
+      - "7003:7003"
+      - "17003:17003"
+    environment:
+      # 设置时区为上海，否则时间会有问题
+      - TZ=Asia/Shanghai
+
+networks:
+  default:
+    external: true
+    name: redis_default
