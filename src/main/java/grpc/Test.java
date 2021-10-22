@@ -3,6 +3,8 @@
 
 package grpc;
 
+/** grpc 生成 */
+@SuppressWarnings("all")
 public final class Test {
   private static final com.google.protobuf.Descriptors.Descriptor
       internal_static_grpc_RPCDateRequest_descriptor;
