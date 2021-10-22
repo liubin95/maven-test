@@ -1,3 +1,5 @@
+package rabbitmq;
+
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -10,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Consumer.
+ * rabbitmq.Consumer.
  *
  * @author 刘斌
  * @version 0.0.1

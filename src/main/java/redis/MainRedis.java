@@ -30,7 +30,7 @@ public class MainRedis {
     System.out.println("rset.size" + rset.size());
     for (int i = 0; i < 10; i++) {
       rset.add(i);
-      System.out.println("      rset.add(" + i + ");");
+      System.out.println("rset.add(" + i + ");");
     }
     System.out.println("rset data ok");
     final RSet<Integer> rSet2 = redisson.getSet("Rset");

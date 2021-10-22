@@ -1,10 +1,12 @@
+package guava;
+
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
 
 import java.nio.charset.Charset;
 
 /**
- * GuavaTest.
+ * guava.GuavaTest.
  *
  * @author 刘斌
  * @version 0.0.1

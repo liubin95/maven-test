@@ -21,7 +21,7 @@ import reactor.util.function.Tuples;
  * @version 0.0.1
  * @serial 2021-09-24 : base version.
  */
-public class Main {
+public class MainWordCount {
 
   public static void main(String[] args) throws IOException {
     //    fileRead();
