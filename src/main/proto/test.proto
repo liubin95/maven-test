@@ -1,0 +1,21 @@
+syntax = "proto3"; // 协议版本
+
+
+// 定义包名
+package grpc;
+
+// 服务接口.定义请求参数和相应结果
+service RPCDateService {
+    rpc getDate (RPCDateRequest) returns (RPCDateResponse) {
+    }
+}
+
+// 定义请求体
+message RPCDateRequest {
+    string userName = 1;
+}
+
+// 定义相应内容
+message RPCDateResponse {
+    string serverDate = 1;
+}

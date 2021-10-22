@@ -85,6 +85,11 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.10</version>
         </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-all</artifactId>
+            <version>1.12.0</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -98,6 +103,14 @@
         </dependencies>
     </dependencyManagement>
     <build>
+        <extensions>
+            <!--            domain 相关-->
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.4.1.Final</version>
+            </extension>
+        </extensions>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -116,6 +129,27 @@
                                 </transformer>
                             </transformers>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.5.0</version>
+                <configuration>
+                    <pluginId>grpc-java</pluginId>
+                    <protocArtifact>com.google.protobuf:protoc:3.0.2:exe:${os.detected.classifier}
+                    </protocArtifact>
+                    <pluginArtifact>
+                        io.grpc:protoc-gen-grpc-java:1.2.0:exe:${os.detected.classifier}
+                    </pluginArtifact>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compile-custom</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
