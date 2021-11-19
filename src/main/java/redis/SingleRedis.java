@@ -8,6 +8,8 @@ import org.redisson.config.Config;
 
 import java.util.concurrent.TimeUnit;
 
+import lombok.extern.log4j.Log4j;
+
 /**
  * SingleRedis.
  *
@@ -15,22 +17,29 @@ import java.util.concurrent.TimeUnit;
  * @version 0.0.1
  * @serial 2021-10-25 : base version.
  */
+@Log4j
 public class SingleRedis {
 
-  public static void main(String[] args) throws InterruptedException {
+  private static final RedissonClient REDISSON;
+
+  static {
     // 1. Create config object
     Config config = new Config();
     // use "rediss://" for SSL connection
     config.useSingleServer().setAddress("redis://127.0.0.1:6379");
     // Sync and Async API
-    RedissonClient redisson = Redisson.create(config);
-    final RBucket<String> bucket = redisson.getBucket("single-redis-bucket");
+    REDISSON = Redisson.create(config);
+  }
+
+  public static void main(String[] args) {
+    bucket();
+  }
+
+  static void bucket() {
+    final RBucket<String> bucket = REDISSON.getBucket("single-redis-bucket");
     bucket.set("hello redis", 10L, TimeUnit.SECONDS);
     final long now = System.currentTimeMillis();
-    System.out.println(now);
     bucket.addListener(
-        (ExpiredObjectListener)
-            s -> System.out.println((System.currentTimeMillis() - now) + " " + s));
-    TimeUnit.MINUTES.sleep(1);
+        (ExpiredObjectListener) s -> log.info((System.currentTimeMillis() - now) + " " + s));
   }
 }
