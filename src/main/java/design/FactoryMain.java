@@ -1,10 +1,10 @@
 package design;
 
-import design.domain.AbstractRewardStrategy;
-import design.domain.NewUserRewardStrategyImpl;
-import design.domain.OldUserRewardStrategyImpl;
-import design.domain.RewardContext;
 import design.domain.StaticFactory;
+import design.domain.strategy.AbstractRewardStrategy;
+import design.domain.strategy.NewUserRewardStrategyImpl;
+import design.domain.strategy.OldUserRewardStrategyImpl;
+import design.domain.strategy.RewardContext;
 
 /**
  * FactoryMain. 工厂模式和策略模式

@@ -1,4 +1,4 @@
-package design.domain;
+package design.domain.chain;
 
 import org.apache.pulsar.shade.org.apache.commons.lang3.RandomUtils;
 

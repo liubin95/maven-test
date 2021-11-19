@@ -1,18 +1,18 @@
-package design.domain;
+package design.domain.strategy;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * OldUserRewardStrategyImpl.
+ * NewUserRewardStrategyImpl.
  *
  * @author 刘斌
  * @version 0.0.1
  * @serial 2021-11-19 : base version.
  */
 @Slf4j
-public class OldUserRewardStrategyImpl extends AbstractRewardStrategy {
+public class NewUserRewardStrategyImpl extends AbstractRewardStrategy {
   @Override
   public void reward(long userId) {
-    log.info("old user reward {}", userId);
+    log.info("new user reward {}", userId);
   }
 }

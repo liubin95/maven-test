@@ -1,4 +1,4 @@
-package design;
+package design.domain.chain;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -6,7 +6,6 @@ import net.sf.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
-import design.domain.AbstractChainHandler;
 import lombok.extern.slf4j.Slf4j;
 
 /**
