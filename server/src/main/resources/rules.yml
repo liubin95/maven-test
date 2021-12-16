@@ -1,0 +1,15 @@
+---
+name: "man400-10Off"
+description: "满400打九折"
+priority: 2
+condition: "order.getTotal().compareTo(new BigDecimal(\"400\")) >= 0"
+actions:
+  - "order.setTotal(new BigDecimal(\"0.9\").multiply(order.getTotal()))"
+
+---
+name: "first400-20"
+description: "新人-20"
+priority: 1
+condition: "order.isFirstTime()"
+actions:
+  - "order.setTotal(order.getTotal().subtract(new BigDecimal(\"20\")))"
