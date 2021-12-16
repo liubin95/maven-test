@@ -1,4 +1,4 @@
-package design.domain.state;
+package domain.design.state;
 
 import lombok.extern.slf4j.Slf4j;
 

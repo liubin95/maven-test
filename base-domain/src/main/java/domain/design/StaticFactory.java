@@ -1,10 +1,10 @@
-package design.domain;
+package domain.design;
 
 import net.sf.cglib.proxy.Enhancer;
 
-import design.domain.chain.AbstractChainHandler;
-import design.domain.chain.SubjectHandler;
-import design.domain.strategy.AbstractRewardStrategy;
+import domain.design.chain.AbstractChainHandler;
+import domain.design.chain.SubjectHandler;
+import domain.design.strategy.AbstractRewardStrategy;
 
 /**
  * StrategyFactory. 策略的抽象工厂-->修改为静态工厂

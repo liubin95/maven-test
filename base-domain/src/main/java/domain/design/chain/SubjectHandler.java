@@ -1,4 +1,4 @@
-package design.domain.chain;
+package domain.design.chain;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;

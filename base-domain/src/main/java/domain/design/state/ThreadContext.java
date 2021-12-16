@@ -1,4 +1,4 @@
-package design.domain.state;
+package domain.design.state;
 
 /**
  * ThreadContext. 状态的上下文，暴露操作接口

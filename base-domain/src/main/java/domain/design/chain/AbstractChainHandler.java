@@ -1,4 +1,4 @@
-package design.domain.chain;
+package domain.design.chain;
 
 import lombok.extern.slf4j.Slf4j;
 

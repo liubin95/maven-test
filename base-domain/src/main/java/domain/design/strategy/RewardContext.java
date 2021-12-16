@@ -1,4 +1,4 @@
-package design.domain.strategy;
+package domain.design.strategy;
 
 /**
  * RewardContext. 策略模式，具体执行类
