@@ -1,6 +1,6 @@
 package design;
 
-import design.domain.state.ThreadContext;
+import domain.design.state.ThreadContext;
 
 /**
  * StateMain.

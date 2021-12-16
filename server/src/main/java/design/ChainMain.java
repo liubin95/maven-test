@@ -1,9 +1,9 @@
 package design;
 
-import design.domain.StaticFactory;
-import design.domain.chain.AbstractChainHandler;
-import design.domain.chain.ChainHandlerA;
-import design.domain.chain.ChainHandlerB;
+import domain.design.StaticFactory;
+import domain.design.chain.AbstractChainHandler;
+import domain.design.chain.ChainHandlerA;
+import domain.design.chain.ChainHandlerB;
 
 /**
  * ChainMain.
