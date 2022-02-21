@@ -20,3 +20,11 @@ Moving --> Still
 Moving --> Crash
 Crash --> [*]
 ```
+```mermaid
+ pie
+ "Java" : 13733.025
+ "SQL" : 9739.225
+ "Scratch" : 2791.7
+ "XML" : 2333.897
+ "YAML" : 2298.638
+```
