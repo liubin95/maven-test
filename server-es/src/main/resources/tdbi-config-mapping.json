@@ -1,0 +1,73 @@
+{
+  "properties": {
+    "quotaZone": {
+      "type": "keyword"
+    },
+    "mapper": {
+      "type": "keyword"
+    },
+    "parent": {
+      "type": "keyword"
+    },
+    "code": {
+      "type": "keyword"
+    },
+    "level": {
+      "type": "integer"
+    },
+    "leaf": {
+      "type": "boolean"
+    },
+    "display": {
+      "type": "integer"
+    },
+    "mapperMulti": {
+      "type": "integer"
+    },
+    "dataType": {
+      "type": "keyword"
+    },
+    "unitLabel": {
+      "type": "keyword"
+    },
+    "expand": {
+      "type": "boolean"
+    },
+    "disabled": {
+      "type": "boolean"
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "path": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "label": {
+      "type": "text",
+      "analyzer": "ikSearchAnalyzer",
+      "search_analyzer": "ikSearchAnalyzer",
+      "fields": {
+        "pinyin": {
+          "type": "text",
+          "analyzer": "pinyinSimpleIndexAnalyzer",
+          "search_analyzer": "pinyinSimpleIndexAnalyzer"
+        }
+      }
+    },
+    "labelPath": {
+      "type": "text",
+      "analyzer": "ikSearchAnalyzer",
+      "search_analyzer": "ikSearchAnalyzer",
+      "fields": {
+        "pinyin": {
+          "type": "text",
+          "analyzer": "pinyinSimpleIndexAnalyzer",
+          "search_analyzer": "pinyinSimpleIndexAnalyzer"
+        }
+      }
+    }
+  }
+}
