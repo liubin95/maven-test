@@ -12,6 +12,7 @@
         <module>base-domain</module>
         <module>server</module>
         <module>server-kafka</module>
+        <module>java-native</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
