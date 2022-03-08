@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>base-domain</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
         <dependency>
@@ -55,11 +55,6 @@
                     <artifactId>slf4j-api</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>3.3.0</version>
         </dependency>
         <dependency>
             <groupId>org.jeasy</groupId>

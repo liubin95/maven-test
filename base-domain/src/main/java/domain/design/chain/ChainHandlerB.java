@@ -1,6 +1,6 @@
 package domain.design.chain;
 
-import org.apache.pulsar.shade.org.apache.commons.lang3.RandomUtils;
+import java.util.Random;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ChainHandlerB extends AbstractChainHandler {
   @Override
   public void handler() {
-    if (RandomUtils.nextBoolean()) {
+    if (new Random().nextBoolean()) {
       throw new RuntimeException("bad luck");
     }
     log.info("ChainHandlerB handler");
