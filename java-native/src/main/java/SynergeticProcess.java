@@ -19,9 +19,11 @@ public class SynergeticProcess {
   private static int I = 0;
 
   public static void main(String[] args) throws InterruptedException {
-    THREAD2.start();
+    log.info("THREAD1 {}", THREAD1.getState());
     THREAD1.start();
+    THREAD2.start();
     COUNT_DOWN_LATCH.await();
+    log.info("THREAD1 {}", THREAD1.getState());
     System.exit(0);
   }
 
@@ -38,6 +40,7 @@ public class SynergeticProcess {
                   }
                   synchronized (THREAD1) {
                     COUNT_DOWN_LATCH.countDown();
+                    log.info("THREAD1 {}", THREAD1.getState());
                     THREAD1.wait();
                   }
                 } catch (InterruptedException e) {
@@ -57,6 +60,7 @@ public class SynergeticProcess {
                 try {
                   log.info("{} {}", I++, Thread.currentThread().getName());
                   synchronized (THREAD1) {
+                    log.info("THREAD1 {}", THREAD1.getState());
                     THREAD1.notify();
                   }
                   synchronized (THREAD2) {
