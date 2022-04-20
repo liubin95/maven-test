@@ -4,6 +4,6 @@ FROM openjdk:8
 ENV TZ Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY ./target/maven-test-1.0-SNAPSHOT.jar /tmp
+COPY ./java-native/target/java-native-1.0.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java","-cp","maven-test-1.0-SNAPSHOT.jar","date.DateMain"]
+ENTRYPOINT ["java","-cp","java-native-1.0.jar","DateMain"]
