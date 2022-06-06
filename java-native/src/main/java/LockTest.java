@@ -3,7 +3,8 @@ import de.vandermeer.asciitable.AsciiTable;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
@@ -25,8 +26,14 @@ import lombok.extern.slf4j.Slf4j;
 public class LockTest {
 
   /** 线程池 */
-  @SuppressWarnings("AlibabaThreadPoolCreation")
-  private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(8);
+  private static final ExecutorService THREAD_POOL =
+      new ThreadPoolExecutor(
+          8,
+          8,
+          0,
+          TimeUnit.SECONDS,
+          new LinkedBlockingQueue<>(),
+          r -> new Thread(r, "LockTest-Thread"));
 
   private static final int NUMBER_OF_TIMES = 10;
   private static final CountDownLatch COUNT_DOWN_LATCH = new CountDownLatch(NUMBER_OF_TIMES);
